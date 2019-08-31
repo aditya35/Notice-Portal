@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RouteGuardService } from './service/route-guard.service';
 
 
 const routes: Routes = [
   {path: '',redirectTo:'home',pathMatch:'full'},
-  {path: 'home',component:AppComponent}
+  {path: 'home',component:HomeComponent , canActivate:[RouteGuardService]},
+  {path: 'login',component:LoginComponent}
 ];
 
 @NgModule({

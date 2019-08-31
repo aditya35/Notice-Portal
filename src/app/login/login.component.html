@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="container">
+    <div class="formContainer">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <mat-form-field>
+                <input matInput placeholder="EMAIL" type="email" ngModel #username="ngModel" name="username" required
+                    class="userInput">
+                <mat-error *ngIf="!username.valid && username.touched">Required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="PASSWORD" name="password" ngModel #password="ngModel" required
+                    [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="!password.valid && password.touched">Required</mat-error>
+            </mat-form-field>
+            <div class="btn">
+                <button type="submit" mat-raised-button color="accent" class="SubmitBtn"
+                    [disabled]="!form.valid || !form.touched  ">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

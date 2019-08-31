@@ -1,0 +1,6 @@
+<mat-toolbar color="primary">
+    <div class="toolbar-head" routerLink="home">{{title}}</div>
+    <span class="toolbar-fill"></span>
+    <button mat-raised-button class="btn-toolbar" color="accent" routerLink="login" *ngIf="auth.checkAuth()">Log In</button>
+    <button mat-raised-button class="btn-toolbar" color="accent" (click)="logOut()" *ngIf="!auth.checkAuth()">Log Out</button>
+</mat-toolbar> 

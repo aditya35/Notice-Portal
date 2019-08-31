@@ -1,7 +1,2 @@
-<mat-toolbar color="primary">
-    <div class="toolbar-head" routerLink="home">{{title}}</div>
-    <span class="toolbar-fill"></span>
-    <button mat-raised-button class="btn-toolbar" color="accent" *ngIf="auth">Log
-        In</button>
-    <button mat-raised-button class="btn-toolbar" color="accent" *ngIf="!auth">Log Out</button>
-</mat-toolbar>
+<app-head></app-head>
+<router-outlet></router-outlet>
