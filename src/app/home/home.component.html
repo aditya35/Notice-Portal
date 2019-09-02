@@ -1,1 +1,19 @@
-<p>home works</p>
+<div class="container">
+    <div *ngIf="!notices">
+        Loading..
+    </div>
+    <div>
+        <div *ngIf="notices" class="notice">
+            <div *ngFor="let notice of notices">
+                <!-- <div>{{notice.bd}}</div> -->
+                <div>{{notice.cls}}</div>
+                <div>{{notice.heading}}</div>
+                <div>{{notice.status}}</div>
+                <div> {{notice.st_dt}}</div>
+                <div> {{notice.en_dt}}</div>
+                <button (click)="downloadNotice(notice.encrypted_notice_id)">Download notice</button>
+
+            </div>
+        </div>
+    </div>
+</div>

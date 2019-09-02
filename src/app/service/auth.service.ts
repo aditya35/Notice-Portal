@@ -30,13 +30,7 @@ export class AuthService {
     map(
       data => {
         this.auth=true;
-        // console.log(data.status)
-        this.user.rollNo = data.rollNo;
-        this.user.authenicated =true;
-        this.user.sessionId1 = data.sessionId1;
-        this.user.sessionId2 = data.sessionId2;
-        this.user.sessionId3 = data.sessionId3;
-        this.user.sessionId4 = data.sessionId4;
+        this.user = <User> data;
         return data
       }
     )
@@ -48,7 +42,7 @@ export class AuthService {
   }
   logout(){
     let headers = new HttpHeaders({
-      'userId' : "1605089"
+      'userId' : this.user.rollNo
     })
     let options = { headers: headers}
     return this.http.get(TNP_LOGOUT,options).pipe(

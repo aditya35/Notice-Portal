@@ -44,7 +44,10 @@ export class LoginComponent implements OnInit ,OnDestroy {
        this.router.navigate(['login'])
       },
       Error =>{
-        console.log(Error)
+        if(Error.status == 200){
+          this.router.navigate(['login'])  
+          this.auth.auth=false;
+        }        
       }
       )
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-head',
@@ -13,10 +14,24 @@ export class HeadComponent implements OnInit {
 
   constructor(
     public auth : AuthService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router : Router
   ){ }
 
-  ngOnInit() {
-    
+  ngOnInit() {}
+
+  logOut(){
+    this.auth.logout().subscribe(
+      Response => {
+       console.log(Response)
+       this.router.navigate(['login'])
+      },
+      Error =>{
+        if(Error.status == 200){
+          this.router.navigate(['login'])  
+          this.auth.auth=false;
+        }        
+      }
+      )
   }
 }
